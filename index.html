@@ -23,7 +23,7 @@
             <a href="#education">Education</a>
             <a href="#services">Projects</a>
             <a href="#testimonials">Skills</a>
-            <a href="#contact" onclick="alert('contact clicked');">Contact</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
@@ -298,9 +298,56 @@
         
     </section>
 
-    <section class="contact" id="contact">Contact</section>
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+
+        <form>
+            <div class="input-group">
+                <div class="input-box">
+                    <input type="text" placeholder="Full Name" name="Name" required>
+                    <input type="email" placeholder="Email" name="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" placeholder="Phone Number" name="Phone" required>
+                    <input type="text" placeholder="Subject" name="Subject" required>
+                </div>
+            </div>
+            <div class="input-group-2">
+                <textarea id="" cols="30" rows="10" placeholder="Your Message" name="Message"></textarea>
+                <input type="submit" value="Send Message" class="btn"  onclick="validateForm()">
+            </div>
+        </form>
+    </section>
 
 
+<script>
+    function validateForm() {
+        // Get all input fields
+        const inputs = document.querySelectorAll('input[required], textarea[required]');
+
+        // Check if all fields are filled
+        let allFieldsFilled = true;
+        inputs.forEach(input => {
+            if (!input.value) {
+                allFieldsFilled = false;
+            }
+        });
+
+         // Validate email format
+         const emailInput = document.querySelector('input[type="email"]');
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        const isValidEmail = emailRegex.test(emailInput.value);
+
+        // Show appropriate alert
+        if (allFieldsFilled && isValidEmail) {
+            alert("Form filled successfully!");
+        } else if (!allFieldsFilled) {
+            alert("Please fill in all required fields.");
+        } else {
+            alert("Invalid email address.");
+        }
+    }
+</script>
 <script src="./index.js"></script>
 </body>
 </html>
